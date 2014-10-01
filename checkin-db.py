@@ -11,14 +11,15 @@ con = None
 con = lite.connect("checkin.db")
 with con:
   cur = con.cursor()
-  cur.execute("SELECT * FROM deltakere WHERE (RNR='"+sys.argv[1]+"') AND (DatoUt Is Null);")
-  if len(cur.fetchall()) > 0:
-    cur.execute("UPDATE deltakere SET DatoUt='"+str(int(time.time()))+"' WHERE (RNR='"+sys.argv[1]+"') AND (DatoUt Is Null);")
-    print "UT"
-  else:
-    cur.execute("INSERT INTO deltakere(AID,RNR,DatoInn) VALUES (0,'"+sys.argv[1]+"','"+str(int(time.time()))+"');")
+  cur.execute("INSERT INTO registreringer(Identifikator,DatoRegistrert,SynkStatus) VALUES ('"+sys.argv[1]+"','"+str(int(time.time()))+"',0);")
+  #cur.execute("SELECT * FROM deltakere WHERE (RNR='"+sys.argv[1]+"') AND (DatoUt Is Null);")
+  #if len(cur.fetchall()) > 0:
+  #  cur.execute("UPDATE deltakere SET DatoUt='"+str(int(time.time()))+"' WHERE (RNR='"+sys.argv[1]+"') AND (DatoUt Is Null);")
+  #  print "UT"
+  #else:
+  #  cur.execute("INSERT INTO deltakere(AID,RNR,DatoInn) VALUES (0,'"+sys.argv[1]+"','"+str(int(time.time()))+"');")
     #print cur.lastrowid
-    print "INN"
+  #  print "INN"
 
 #while True:
 #try:

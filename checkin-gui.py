@@ -30,8 +30,8 @@ while True:
     curses.flash()
   else:
     if re.search("[0-9]", chr(event)):
-      if len(rnr) >= 7:
-        rnr = rnr[1:]
+      #if len(rnr) >= 7:
+      #  rnr = rnr[1:]
       rnr = rnr+chr(event)
   stdscr.addstr(4, 21, rnr)
 
